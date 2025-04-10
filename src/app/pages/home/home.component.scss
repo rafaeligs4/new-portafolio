@@ -1,0 +1,21 @@
+.container-body{
+    margin: 0;
+    /* font-family: 'Roboto Slab', serif; */
+    /* font-family: 'Roboto Slab', serif; */
+    font-family: 'Karla', sans-serif;
+    background-color: #010440;
+    color: white;
+    display: grid;    
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6,minmax(10vh,auto));
+    gap: 10px;
+}
+.section_my_projects{ 
+    grid-column: 1/3;
+    grid-row: 4/5;
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-rows: 4em minmax(200px,auto);
+    gap: 10px;
+}
