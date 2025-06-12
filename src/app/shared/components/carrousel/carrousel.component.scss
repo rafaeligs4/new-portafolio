@@ -1,22 +1,8 @@
 
-.container{
-    display: flex;
-    position: relative;
-}
-
-.btn_prev{
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-}
 .content_port{
   
     display: flex;
     width: inherit;
-    height: inherit;
-    grid-template-columns: 1fr 1fr;
 
 }
 .content_port div{
@@ -32,13 +18,6 @@
     height: auto;
     width: 100%;
     justify-content: center;
-    display: grid;
-    grid-template-rows: minmax(1em,auto) minmax(1em,auto) minmax(1em,auto) minmax(1em,auto);
-    gap: 10px;
-}
-.content_etiq{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
 }
 .content_btn_github{
@@ -69,16 +48,83 @@
 .txt_btn{
     align-self: center;
 }
-.content_btn_github 
-.icon_min{
+.content_btn_github {
+    .icon_min{
     width: 1.5em;
     height: 1.5em;
 }
+}
+
+.btn_prev{
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translate(-50%, -50%);
+      z-index: 2;
+
+  cursor: pointer;
+}
 
 .btn_next{
-    grid-column: 3/4;
-    grid-row: 2/3;
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+}
+.btn_prev,.btn_next{
+    .icon_min{
+    width: 1.5em;
+    height: 1.5em;
+}
     background-color: white;
     justify-self: start;
     align-self: center;
+}
+
+/* slider.component.css */
+
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  background-color: #010440;
+  transition: transform 0.5s ease-in-out; /* Transición para el deslizamiento suave */
+}
+
+/* Cada slide ocupa el 100% del ancho del contenedor */
+.slider .card {
+  min-width: 100%;
+}
+
+/* Resto de estilos para botones, círculos, etc. */
+.btn_next {
+  cursor: pointer;
+  /* otros estilos para posicionar el botón */
+}
+
+.cntn_circles_slider {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.circle_slider {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.circle_slider.circle_active {
+  background-color: white;
 }

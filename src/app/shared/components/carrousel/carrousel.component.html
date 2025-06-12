@@ -1,213 +1,81 @@
-<div  class="container">
-    <div class="sectn_my_proy_tittle">
-        <p class="title_text">Portafolio</p>
+<!-- slider.component.html -->
+<div class="container">
+  
+  
+  <!-- Botón de avance -->
+  <div class="btn_prev" (click)="prevSlide()">
+    <div class="btn_element" id="btn_prev">
+      <img src="./svg/arrow_prev.svg" class="img_size">
     </div>
-    <div class="btn_prev">
-        <div class="btn_element" id="btn_prev">
-            <img src="./svg/arrow_prev.svg" class="img_size">
+  </div>
+  
+    <div 
+    #sliderRef
+    class="slider" 
+    [ngStyle]="{
+      'transform': transformValue,
+      'transition': isDragging ? 'none' : transitionStyle
+    }"
+    (mousedown)="onDragStart($event)"
+    (touchstart)="onDragStart($event)"
+    (mousemove)="onDragMove($event)"
+    (touchmove)="onDragMove($event)"
+    (mouseup)="onDragEnd($event)"
+    (mouseleave)="onDragEnd($event)"
+    (touchend)="onDragEnd($event)"
+    (transitionend)="onTransitionEnd()"
+  >
+    @for (slide of slides; track $index) {
+    <div class="card" >
+      <!-- Contenido de cada slide -->
+      <div class="content_port">
+        <div style="justify-self: center;">
+          <div class="size_img_port testbg mrg_img"></div>
         </div>
+        <div class="info_port">
+          <div style="justify-self: center;">
+            <p class="subtitle_text">{{ slide.title }}</p>
+          </div>
+          <div>
+            <p>{{ slide.description }}</p>
+          </div>
+          <div class="content_etiq">
+            <span>Etiquetas</span>
+            @for (tag of slide.etiquetas; track $index) {
+              <div class="chips">
+                <span>{{ tag.nombre }}</span>
+              </div>
+            }
+          </div>
+          <div class="content_btn_github">
+            <a [href]="slide.repoUrl" target="_blank">
+              <span class="txt_btn">Ver repositorio</span>
+              <span>
+                <img class="icon_min" [src]="slide.icon" alt="">
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
 
+
+  </div>
+
+  <!-- Botón de avance -->
+  <div class="btn_next" (click)="nextSlide()">
+    <div class="btn_element" id="btn_next">
+      <img src="./svg/arrow_next.svg" class="img_size">
     </div>
-   
-    <div class="slider">
-      
-        <div class="card"  >
-            <div class="content_port">
-                <div style="justify-self: center;">
-                    <div  class="size_img_port testbg mrg_img"></div>
-                </div>
-                <div class="info_port">
-                    <div style="justify-self: center;">
-                        <p class="subtitle_text">Aplicacion #1</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias eos ipsa magni velit cumque doloribus itaque ratione incidunt. Quas quisquam eum consectetur ullam molestias eaque magni, eligendi mollitia voluptates. Totam.</p>
-                    </div>
-                    <div class="content_etiq">
-                        <span>Etiquetas</span>
-                        <div class="chips">
-                            <span>Ola</span>
-                        </div>
-    
-                        <div class="chips">
-                            <span>Mundo</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content_btn_github">
-                            <a href="#">
-                                <span class="txt_btn">Ver repositorio</span>
-                                <span>
-                                    <img class="icon_min" src="./svg/github.svg" alt="">
-                                </span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card"  >
-            <div class="content_port">
-                <div style="justify-self: center;">
-                    <div  class="size_img_port testbg mrg_img"></div>
-                </div>
-                <div class="info_port">
-                    <div style="justify-self: center;">
-                        <p class="subtitle_text">Aplicacion #1</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias eos ipsa magni velit cumque doloribus itaque ratione incidunt. Quas quisquam eum consectetur ullam molestias eaque magni, eligendi mollitia voluptates. Totam.</p>
-                    </div>
-                    <div class="content_etiq">
-                        <span>Etiquetas</span>
-                        <div class="chips">
-                            <span>Ola</span>
-                        </div>
-    
-                        <div class="chips">
-                            <span>Mundo</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content_btn_github">
-                            <a href="#">
-                                <span class="txt_btn">Ver repositorio</span>
-                                <span>
-                                    <img class="icon_min" src="./svg/github.svg" alt="">
-                                </span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card"  >
-            <div class="content_port">
-                <div style="justify-self: center;">
-                    <div  class="size_img_port testbg mrg_img"></div>
-                </div>
-                <div class="info_port">
-                    <div style="justify-self: center;">
-                        <p class="subtitle_text">Aplicacion #1</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias eos ipsa magni velit cumque doloribus itaque ratione incidunt. Quas quisquam eum consectetur ullam molestias eaque magni, eligendi mollitia voluptates. Totam.</p>
-                    </div>
-                    <div class="content_etiq">
-                        <span>Etiquetas</span>
-                        <div class="chips">
-                            <span>Ola</span>
-                        </div>
-    
-                        <div class="chips">
-                            <span>Mundo</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content_btn_github">
-                            <a href="#">
-                                <span class="txt_btn">Ver repositorio</span>
-                                <span>
-                                    <img class="icon_min" src="./svg/github.svg" alt="">
-                                </span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card"  >
-            <div class="content_port">
-                <div style="justify-self: center;">
-                    <div  class="size_img_port testbg mrg_img"></div>
-                </div>
-                <div class="info_port">
-                    <div style="justify-self: center;">
-                        <p class="subtitle_text">Aplicacion #1</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias eos ipsa magni velit cumque doloribus itaque ratione incidunt. Quas quisquam eum consectetur ullam molestias eaque magni, eligendi mollitia voluptates. Totam.</p>
-                    </div>
-                    <div class="content_etiq">
-                        <span>Etiquetas</span>
-                        <div class="chips">
-                            <span>Ola</span>
-                        </div>
-    
-                        <div class="chips">
-                            <span>Mundo</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content_btn_github">
-                            <a href="#">
-                                <span class="txt_btn">Ver repositorio</span>
-                                <span>
-                                    <img class="icon_min" src="./svg/github.svg" alt="">
-                                </span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card"  >
-            <div class="content_port">
-                <div style="justify-self: center;">
-                    <div  class="size_img_port testbg mrg_img"></div>
-                </div>
-                <div class="info_port">
-                    <div style="justify-self: center;">
-                        <p class="subtitle_text">Aplicacion #1</p>
-                    </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias eos ipsa magni velit cumque doloribus itaque ratione incidunt. Quas quisquam eum consectetur ullam molestias eaque magni, eligendi mollitia voluptates. Totam.</p>
-                    </div>
-                    <div class="content_etiq">
-                        <span>Etiquetas</span>
-                        <div class="chips">
-                            <span>Ola</span>
-                        </div>
-    
-                        <div class="chips">
-                            <span>Mundo</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="content_btn_github">
-                            <a href="#">
-                                <span class="txt_btn">Ver repositorio</span>
-                                <span>
-                                    <img class="icon_min" src="./svg/github.svg" alt="">
-                                </span>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-       
+  </div>
+
+  <!-- Navegación con círculos (se usan los slides reales, por ello se ajusta el índice restándole 1) -->
+  <div class="cntn_circles_slider">
+    <div class="circle_slider" 
+         *ngFor="let s of slidesOriginal; let i = index"
+         [ngClass]="{'circle_active': currentSlide === i + 1}"
+         (click)="goToSlide(i)">
     </div>
-   
-    <div class="btn_next" >
-        <div class="btn_element" id="btn_next">
-            <img src="./svg/arrow_next.svg" class="img_size">
-        </div>
-    </div>   
-    <div class="cntn_circles_slider">
-        <div class="circle_slider circle_active"></div>
-        <div class="circle_slider "></div>
-        <div class="circle_slider "></div>
-        <div class="circle_slider"></div>
-        <div class="circle_slider"></div>
-    </div>     
-    <!-- <div class="progress_bar">
-        <div class="elemento_progress"></div>
-    </div> -->
+  </div>
 </div>
